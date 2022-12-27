@@ -4,39 +4,31 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "Country",
+    "Activity",
     {
       id: {
-        type: DataTypes.STRING(3),
-        allowNull: false,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      flag: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      continent: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      capital: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      subregion: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      area: {
-        type: DataTypes.FLOAT,
-        allowNull: true,
-      },
-      population: {
+      difficulty: {
         type: DataTypes.INTEGER,
+        validate: {
+          min: { args: [0], msg: "Dificulty must be between 0 and 5" },
+          max: { args: [5], msg: "Dificulty must be between 0 and 5" },
+        },
+        allowNull: false,
+      },
+      duration: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      season: {
+        type: DataTypes.ENUM("Winter", "Summer", "Spring", "Autum"),
         allowNull: true,
       },
     },
