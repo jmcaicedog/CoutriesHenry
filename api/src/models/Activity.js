@@ -28,8 +28,23 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       season: {
-        type: DataTypes.ENUM("Winter", "Summer", "Spring", "Autum"),
-        allowNull: true,
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Not null",
+          },
+          areEquals(value) {
+            if (
+              value !== "Winter" &&
+              value !== "Spring" &&
+              value !== "Autum" &&
+              value !== "Summer"
+            ) {
+              throw "Season must be one of Spring, Autum, Summer or Winter";
+            }
+          },
+        },
       },
     },
     {

@@ -13,7 +13,7 @@ const getCountries = async () => {
           name: country.name.common,
           flag: country.flags[0],
           continent: country.continents[0],
-          capital: country.capital, //Object.values(country.capital)[0];
+          capital: country.capital != null ? country.capital[0] : "No capital",
           subregion: country.subregion,
           area: country.area,
           population: country.population,
