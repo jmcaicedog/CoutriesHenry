@@ -7,6 +7,6 @@ const {
 } = require("../controllers/Country.controller");
 
 countriesRouter.get("/", getAllCountries);
-countriesRouter.get("/:name", getCountryByName);
+countriesRouter.get("/:id", getCountryByName);
 
 module.exports = countriesRouter;

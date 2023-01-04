@@ -2,9 +2,9 @@ const { Country, Activity } = require("../db");
 const Sequelize = require("sequelize");
 
 const getCountryByName = async (req, res) => {
-  const name = req.params;
+  const id = req.params;
   try {
-    const country = await Country.findOne({ where: name, include: Activity });
+    const country = await Country.findOne({ where: id, include: Activity });
     if (!country) {
       throw "Country not found...";
     }
