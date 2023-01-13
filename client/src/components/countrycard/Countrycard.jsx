@@ -1,8 +1,7 @@
 import style from "./Countrycard.module.css";
-console.log(style.span);
 const Countrycard = (props) =>{
     return(
-        <div className={style.cardcontainer}>  
+        <div className={style.cardcontainer} key={props.id}>
             <div className={style.flag}>
                 <img className={style.imgflag} src={props.flag} alt="Flag"/>
             </div>

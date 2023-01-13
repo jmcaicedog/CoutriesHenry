@@ -1,33 +1,27 @@
-
-import React from "react";
-import axios from "axios";
+import style from "./Countrieslist.module.css"
+import {useEffect} from "react";
 import Countrycard from '../countrycard/Countrycard';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountries } from "../../redux/actions";
 
-const Countrieslist = () => {
-    const [countries, setCountries] = React.useState(null);
-  
-    React.useEffect(() => {
-      axios.get("http://localhost:3001/countries").then((response) => {
-        setCountries(response.data);
-      });
-    }, []);
-  
-    if (!countries) return null;
-    
-    console.log(countries[1]);
+const Countrieslist = () => {    
+    const dispatch = useDispatch();
+    const countries = useSelector((state)=>state.countries);
+    useEffect(()=>{
+      dispatch(getCountries());
+    },[]);
     return(
         countries.map((country)=>{
             return (
-                <Link to={`/countries/${country.id}`}>
-                  <Countrycard flag={country.flag} name={country.name} capital={country.capital} continent={country.continent} population={country.population}/>
-                </Link>
+              <div key={country.id} className={style.countriescontainer}>
+                <NavLink to={`/countries/${country.id}`} className={style.NavLink}>
+                  <Countrycard id={country.id} flag={country.flag} name={country.name} capital={country.capital} continent={country.continent} population={country.population}/>
+                </NavLink>
+              </div>  
               );
         })
     )
-    
-
-    
   }
 
 
