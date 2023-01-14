@@ -52,7 +52,7 @@ const getAllCountries = async (req, res) => {
       }
       res.status(200).json(countries);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).send("Country not found...");
     }
   }
 };

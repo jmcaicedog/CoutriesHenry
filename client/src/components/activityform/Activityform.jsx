@@ -4,7 +4,6 @@ import validate from "../../utils/validate";
 
 const Activityform = (props) =>{
 
-    
     const [form, setForm] = useState({
         email:"",
         password:"",
@@ -17,7 +16,7 @@ const Activityform = (props) =>{
     
     useEffect(()=>{
         validate(form, errors, setErrors);
-    },[form]);
+    },[form, errors]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,10 +34,7 @@ const Activityform = (props) =>{
             ...form,
             [property]:value,
         });
-        
     }
-
-    
 
     return(
       <div className="activityForm">

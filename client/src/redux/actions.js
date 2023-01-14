@@ -15,3 +15,17 @@ export const getCountry = (countryId) => {
     dispatch({ type: "GET_COUNTRY", payload: response.data });
   };
 };
+
+export const searchCountries = (searchTerm) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/countries/?name=${searchTerm}`
+      );
+      dispatch({ type: "SEARCH_COUNTRIES", payload: response }); //[0].id });
+    } catch (error) {
+      console.log("Hubo un hijueputa error: " + error.message);
+      //dispatch({ type: "SEARCH_COUNTRIES", payload: {} });
+    }
+  };
+};

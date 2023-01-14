@@ -1,12 +1,12 @@
 import { useHistory, useParams } from "react-router-dom";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getCountry } from "../../redux/actions";
-import style from "./Countrydetails.module.css";
+import {useEffect} from "react";
+import { searchCountry } from "../../redux/actions";
+import style from "./Searchresult.module.css";
 
-const Countrydetails = () =>{
-    const {countryId}=useParams();
+const Searchresult = (props) =>{
+    const {searchterm}=useParams();
     const history = useHistory();
   
     const dispatch = useDispatch();
@@ -14,8 +14,8 @@ const Countrydetails = () =>{
     const activities = useSelector((state)=>state.activities);
     
     useEffect(()=>{
-      dispatch(getCountry(countryId));
-    },[countryId, dispatch]);
+      dispatch(searchCountry(searchterm));
+    },[]);
 
     const activitieslist = activities.map((activity)=>{
         return(
@@ -26,6 +26,8 @@ const Countrydetails = () =>{
                 <p className={style.p}><span className={style.span}>Duration:</span> {activity.duration}</p>
             </div>)
     })
+
+    console.log(activitieslist.length);
     
     return(
         <>
@@ -60,4 +62,4 @@ const Countrydetails = () =>{
     )
 }
 
-export default Countrydetails;
+export default Searchresult;
