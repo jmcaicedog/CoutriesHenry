@@ -3,6 +3,8 @@ const initialState = {
   country: {},
   activities: [],
   searchTerm: "",
+  current: 1,
+  page: 1,
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +18,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         country: action.payload,
         activities: action.payload.Activities,
+      };
+
+    case "SET_CURRENT":
+      return {
+        ...state,
+        current: action.payload,
+      };
+
+    case "SET_PAGE":
+      return {
+        ...state,
+        page: action.payload,
       };
 
     default:

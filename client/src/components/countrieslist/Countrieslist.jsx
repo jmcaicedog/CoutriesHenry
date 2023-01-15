@@ -1,23 +1,29 @@
 import style from "./Countrieslist.module.css";
 import {useEffect, useState} from "react";
 import Countrycard from '../countrycard/Countrycard';
+import Pagination from "../pagination/Pagination"
+import Searchbar from "../searchbar/Searchbar"
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, searchCountries } from "../../redux/actions";
+import { getCountries, setCurrent, setPage} from "../../redux/actions";
+
 
 const Countrieslist = () => {    
-    const [searchTerm, setSearchTerm] = useState("");
     const dispatch = useDispatch();
     const countries = useSelector((state)=>state.countries);
+    const current = useSelector((state)=>state.current);
+    const page = useSelector((state)=>state.page);
 
 
-    const handleChange = (event) => {
-      setSearchTerm(event.target.value);
-      dispatch(searchCountries(event.target.value));
-    };
-          
+    //const [page, setPage] = useState(1);
+    //const [current, setCurrent] = useState(1);
+    const [countriesPerPage, setCountriesPerPage] = useState(9);
+    //page===1? setCountriesPerPage(9) : setCountriesPerPage(10)
 
-    const countrieslist = countries.map((country)=>{
+    console.log(current);
+    let max = countries.length / countriesPerPage;
+    
+    const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
         <div key={country.id} className={style.countriescontainer}>
           <NavLink to={`/countries/${country.id}`} className={style.NavLink}>
@@ -29,24 +35,16 @@ const Countrieslist = () => {
 
     useEffect(()=>{
       dispatch(getCountries());
+      //dispatch(setPage(1));
     },[dispatch]);
     
     return(
       <>
-        <div className={style.searchbar}>
-            <input  
-              className={style.input}
-              type="text" 
-              name="searchTerm"   
-              value={searchTerm}
-              autoComplete="off"
-              onChange={handleChange}>
-            </input>
-        </div>
+        <Searchbar/>
+        <div><Pagination max={max}/></div>
         <div>{countrieslist}</div>
       </>  
     )
-
 }
 
 export default Countrieslist;

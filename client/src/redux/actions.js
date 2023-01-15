@@ -22,10 +22,22 @@ export const searchCountries = (searchTerm) => {
       const response = await axios.get(
         `http://localhost:3001/countries/?name=${searchTerm}`
       );
-      dispatch({ type: "SEARCH_COUNTRIES", payload: response }); //[0].id });
+      dispatch({ type: "SEARCH_COUNTRIES", payload: response });
     } catch (error) {
-      console.log("Hubo un hijueputa error: " + error.message);
-      //dispatch({ type: "SEARCH_COUNTRIES", payload: {} });
+      console.log("No hay un país que coincida con la búsqueda...");
+      dispatch({ type: "SEARCH_COUNTRIES", payload: { data: [] } });
     }
+  };
+};
+
+export const setCurrent = (current) => {
+  return function (dispatch) {
+    dispatch({ type: "SET_CURRENT", payload: current });
+  };
+};
+
+export const setPage = (page) => {
+  return function (dispatch) {
+    dispatch({ type: "SET_PAGE", payload: page });
   };
 };
