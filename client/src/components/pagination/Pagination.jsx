@@ -27,7 +27,7 @@ const Pagination = (props) =>{
         <>
         <div className={style.paginator}>
             <button className={style.myBtn} onClick={prevPage}>Prev</button>
-            <p>{current}</p><p> off {max}</p>
+            <p className={style.current1}>{current}</p><p className={style.current2}> / </p><p className={style.current3}>{max}</p>
             <button className={style.myBtn} onClick={nextPage}>Next</button>
         </div>
         </>

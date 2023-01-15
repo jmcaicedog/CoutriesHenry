@@ -32,8 +32,11 @@ const Countrieslist = () => {
     
     return(
       <>
-        <Searchbar/>
-        <div><Pagination max={max}/></div>
+        <div className={style.header}>
+          <Searchbar/>
+          <Pagination max={max}/>
+        </div>
+      
         <div>{countrieslist}</div>
       </>  
     )
