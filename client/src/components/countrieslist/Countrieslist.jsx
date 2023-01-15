@@ -5,7 +5,7 @@ import Pagination from "../pagination/Pagination"
 import Searchbar from "../searchbar/Searchbar"
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, setCurrent, setPage} from "../../redux/actions";
+import { getCountries } from "../../redux/actions";
 
 
 const Countrieslist = () => {    
@@ -14,9 +14,6 @@ const Countrieslist = () => {
     const current = useSelector((state)=>state.current);
     const page = useSelector((state)=>state.page);
 
-
-    //const [page, setPage] = useState(1);
-    //const [current, setCurrent] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(9);
     //page===1? setCountriesPerPage(9) : setCountriesPerPage(10)
 
