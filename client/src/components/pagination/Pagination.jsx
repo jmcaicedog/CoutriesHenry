@@ -1,14 +1,13 @@
 import style from "./Pagination.module.css";
-import { setCurrent, setPage } from "../../redux/actions";
+import { setCurrent, setPage} from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const Pagination = (params) =>{
+const Pagination = (props) =>{
+
     const dispatch = useDispatch();
     const current = useSelector((state)=>state.current);
     const page = useSelector((state)=>state.page);
-    let {max} = params;
-
-    max = Math.ceil(max);
+    let {max} = props;
 
     const nextPage = ()=>{
         if(current<max){
@@ -26,11 +25,11 @@ const Pagination = (params) =>{
 
     return(
         <>
-            <div className={style.paginator}>
-                <button className={style.myBtn} onClick={prevPage}>Prev</button>
-                <p>{current}</p><p> off {max}</p>
-                <button className={style.myBtn} onClick={nextPage}>Next</button>
-            </div>
+        <div className={style.paginator}>
+            <button className={style.myBtn} onClick={prevPage}>Prev</button>
+            <p>{current}</p><p> off {max}</p>
+            <button className={style.myBtn} onClick={nextPage}>Next</button>
+        </div>
         </>
     )
 }

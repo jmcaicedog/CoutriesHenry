@@ -1,25 +1,20 @@
 import style from "./Countrieslist.module.css";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import Countrycard from '../countrycard/Countrycard';
 import Pagination from "../pagination/Pagination"
 import Searchbar from "../searchbar/Searchbar"
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries } from "../../redux/actions";
+import { getCountries, setCountriesPerPage} from "../../redux/actions";
 
 
 const Countrieslist = () => {    
     const dispatch = useDispatch();
     const countries = useSelector((state)=>state.countries);
-    const current = useSelector((state)=>state.current);
     const page = useSelector((state)=>state.page);
+    const countriesPerPage = useSelector((state)=>state.countriesPerPage);
 
-    const [countriesPerPage, setCountriesPerPage] = useState(9);
-    //page===1? setCountriesPerPage(9) : setCountriesPerPage(10)
-
-    console.log(current);
-    let max = countries.length / countriesPerPage;
-    
+    let max = Math.ceil(countries.length / countriesPerPage);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
         <div key={country.id} className={style.countriescontainer}>
@@ -32,8 +27,8 @@ const Countrieslist = () => {
 
     useEffect(()=>{
       dispatch(getCountries());
-      //dispatch(setPage(1));
-    },[dispatch]);
+      page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
+    },[dispatch,page]);
     
     return(
       <>

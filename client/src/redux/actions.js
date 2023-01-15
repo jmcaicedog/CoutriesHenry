@@ -31,13 +31,22 @@ export const searchCountries = (searchTerm) => {
 };
 
 export const setCurrent = (current) => {
-  return function (dispatch) {
-    dispatch({ type: "SET_CURRENT", payload: current });
+  return async function (dispatch) {
+    await dispatch({ type: "SET_CURRENT", payload: current });
   };
 };
 
 export const setPage = (page) => {
-  return function (dispatch) {
-    dispatch({ type: "SET_PAGE", payload: page });
+  return async function (dispatch) {
+    await dispatch({ type: "SET_PAGE", payload: page });
+  };
+};
+
+export const setCountriesPerPage = (countriesPerPage) => {
+  return async function (dispatch) {
+    await dispatch({
+      type: "SET_COUNTRIES_PER_PAGE",
+      payload: countriesPerPage,
+    });
   };
 };

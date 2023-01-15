@@ -5,6 +5,7 @@ const initialState = {
   searchTerm: "",
   current: 1,
   page: 1,
+  countriesPerPage: 10,
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload,
+      };
+
+    case "SET_COUNTRIES_PER_PAGE":
+      return {
+        ...state,
+        countriesPerPage: action.payload,
       };
 
     default:
