@@ -4,6 +4,7 @@ import Countrycard from '../countrycard/Countrycard';
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries, setCountriesPerPage} from "../../redux/actions";
+import Filterbycontinent from "../filters/filterbycontinent/Filterbycontinent";
 
 
 const Countrieslist = () => {    
@@ -28,6 +29,7 @@ const Countrieslist = () => {
     
     return(
       <>
+        <div>{<Filterbycontinent/>}</div>
         <div>{countrieslist}</div>
       </>  
     )

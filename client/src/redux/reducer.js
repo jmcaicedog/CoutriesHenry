@@ -39,6 +39,18 @@ const reducer = (state = initialState, action) => {
         countriesPerPage: action.payload,
       };
 
+    case "FILTER_BY_CONTINENT":
+      const { continent, response } = action.payload;
+      return {
+        ...state,
+        countries:
+          continent === "All"
+            ? response.data
+            : response.data.filter(
+                (element) => element.continent === continent
+              ),
+      };
+
     default:
       return { ...state };
   }
