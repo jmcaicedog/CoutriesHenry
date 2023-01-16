@@ -1,11 +1,25 @@
 .navbar{
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
-    padding-left:    40px;
     box-shadow: rgb(0 0 0 / 25%) 0px 0px 20px 10px;
     margin-bottom: 50px;
     background-color: #ffffff;
+}
+
+.oneofftree{
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchbar{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo{
@@ -20,6 +34,26 @@
 
 .h1{
     font-size: 20px;
-    padding-top: 15px;
+    padding-left: 15px;
     line-height: 18px;
 }
+
+.myBtn {
+    height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 150px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .myBtn:hover {
+    background: #ddd;
+    color: black;
+  }

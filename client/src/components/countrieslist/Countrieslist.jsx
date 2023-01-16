@@ -1,8 +1,6 @@
 import style from "./Countrieslist.module.css";
 import {useEffect} from "react";
 import Countrycard from '../countrycard/Countrycard';
-import Pagination from "../pagination/Pagination"
-import Searchbar from "../searchbar/Searchbar"
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries, setCountriesPerPage} from "../../redux/actions";
@@ -30,11 +28,6 @@ const Countrieslist = () => {
     
     return(
       <>
-        <div className={style.header}>
-          <Searchbar/>
-          <Pagination/>
-        </div>
-      
         <div>{countrieslist}</div>
       </>  
     )
