@@ -17,7 +17,7 @@ const Pagination = () =>{
         if(current<max){
             dispatch(setCurrent(current + 1));
             dispatch(setPage(page + 1));
-            page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
+            //page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
         }
     }
 
@@ -25,7 +25,7 @@ const Pagination = () =>{
         if(current>1){
             dispatch(setCurrent(current - 1));
             dispatch(setPage(page - 1));
-            page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
+            //page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
         }
     }
 

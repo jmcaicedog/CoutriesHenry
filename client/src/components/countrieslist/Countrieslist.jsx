@@ -28,7 +28,7 @@ const Countrieslist = () => {
     useEffect(()=>{
       !countries.length && dispatch(getCountries());
       page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
-    },[dispatch,page,countries.length]);
+    },[dispatch,page]);
     
     return(
       <>
