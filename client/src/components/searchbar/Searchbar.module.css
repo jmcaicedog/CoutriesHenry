@@ -7,6 +7,10 @@
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
 }
 
+.searchbarhide{
+    display:none;
+}
+
 .input{
     width: calc(100% - 65px);
     border: none;

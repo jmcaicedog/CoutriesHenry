@@ -1,9 +1,10 @@
 import style from "./Pagination.module.css";
+import { useHistory } from "react-router-dom";
 import { setCurrent, setPage} from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const Pagination = () =>{
-
+    const history = useHistory();
     const dispatch = useDispatch();
     const countries = useSelector((state)=>state.countries);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
@@ -26,7 +27,7 @@ const Pagination = () =>{
 
     return(
         <>
-        <div className={style.paginator}>
+        <div className={history.location.pathname==="/countries"? style.paginator : style.paginatorhide}>
             <button className={style.myBtn} onClick={prevPage}>Prev</button>
             <p className={style.current1}>{current}</p><p className={style.current2}> / </p><p className={style.current3}>{max}</p>
             <button className={style.myBtn} onClick={nextPage}>Next</button>

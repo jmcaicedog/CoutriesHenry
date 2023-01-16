@@ -4,6 +4,10 @@
     margin-left: 40px;
 }
 
+.paginatorhide{
+  display: none;
+}
+
 .current1{
   margin-left: 20px;
 }

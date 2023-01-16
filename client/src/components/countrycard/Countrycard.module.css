@@ -15,12 +15,12 @@
 }
 
 .imgflag{
-    width: 420px;
+    width: 320px;
     display: block;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     overflow: hidden;
-    height: 270px;
+    height: 180px;
     object-fit: cover;
 }
 
@@ -35,6 +35,7 @@ padding-left: 20px !important;
 }
 
 .h3{
+    font-size: 16px;
     padding-left: 18px;
     padding-top: 10px;
     padding-bottom: 10px;
