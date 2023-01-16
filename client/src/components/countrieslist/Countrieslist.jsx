@@ -14,7 +14,7 @@ const Countrieslist = () => {
     const page = useSelector((state)=>state.page);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
 
-    let max = Math.ceil(countries.length / countriesPerPage);
+    //let max = Math.ceil(countries.length / countriesPerPage);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
         <div key={country.id} className={style.countriescontainer}>
@@ -26,15 +26,15 @@ const Countrieslist = () => {
     });
 
     useEffect(()=>{
-      dispatch(getCountries());
+      !countries.length && dispatch(getCountries());
       page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
-    },[dispatch,page]);
+    },[dispatch,page,countries.length]);
     
     return(
       <>
         <div className={style.header}>
           <Searchbar/>
-          <Pagination max={max}/>
+          <Pagination/>
         </div>
       
         <div>{countrieslist}</div>

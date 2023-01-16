@@ -7,12 +7,10 @@ import style from "./Searchbar.module.css";
 const Searchbar = () =>{
     const dispatch = useDispatch();
 
-
     const handleChange = (event) => {
         dispatch(searchCountries(event.target.value));
         dispatch(setCurrent(1));
         dispatch(setPage(1));
-    
       };
 
     return(
