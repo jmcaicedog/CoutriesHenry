@@ -13,8 +13,6 @@ const Countrieslist = () => {
     const countries = useSelector((state)=>state.countries);
     const page = useSelector((state)=>state.page);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
-
-    //let max = Math.ceil(countries.length / countriesPerPage);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
         <div key={country.id} className={style.countriescontainer}>

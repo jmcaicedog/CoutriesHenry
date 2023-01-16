@@ -25,6 +25,7 @@ export const searchCountries = (searchTerm) => {
       dispatch({ type: "SEARCH_COUNTRIES", payload: response });
     } catch (error) {
       console.log("No hay un país que coincida con la búsqueda...");
+      alert("Not country found... Please try another world!");
       dispatch({ type: "SEARCH_COUNTRIES", payload: { data: [] } });
     }
   };
