@@ -1,3 +1,7 @@
+.filterbar{
+    display: flex;
+    margin-bottom: 30px;
+}
 .countriescontainer{
     display: inline-flex;
     flex-direction: row;

@@ -6,13 +6,17 @@ const initialState = {
   current: 1,
   page: 1,
   countriesPerPage: 10,
+  orderedsend: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_COUNTRIES":
     case "SEARCH_COUNTRIES":
-      return { ...state, countries: action.payload.data };
+      return {
+        ...state,
+        countries: action.payload.data,
+      };
 
     case "GET_COUNTRY":
       return {
@@ -37,6 +41,25 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         countriesPerPage: action.payload,
+      };
+
+    case "SORT_BY_NAME":
+      let ordered =
+        action.payload === "A to Z"
+          ? state.countries.sort((a, b) => {
+              if (a.name.localeCompare(b.name) > 0) return 1;
+              if (a.name.localeCompare(b.name) < 0) return -1;
+              return 0;
+            })
+          : state.countries.sort((a, b) => {
+              if (a.name.localeCompare(b.name) < 0) return 1;
+              if (a.name.localeCompare(b.name) > 0) return -1;
+              return 0;
+            });
+      return {
+        ...state,
+        countries: ordered,
+        orderedsend: !state.orderedsend,
       };
 
     case "FILTER_BY_CONTINENT":

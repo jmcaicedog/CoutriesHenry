@@ -61,3 +61,12 @@ export const filterByContinent = (continent) => {
     });
   };
 };
+
+export const sortByName = (sortDirection) => {
+  return async function (dispatch) {
+    dispatch({
+      type: "SORT_BY_NAME",
+      payload: sortDirection,
+    });
+  };
+};

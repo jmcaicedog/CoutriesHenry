@@ -1,5 +1,5 @@
 import style from "./Filterbycontinent.module.css";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { filterByContinent, setCurrent, setPage } from "../../../redux/actions";
 
 
