@@ -62,6 +62,33 @@ const reducer = (state = initialState, action) => {
         orderedsend: !state.orderedsend,
       };
 
+    case "SORT_BY_POPULATION":
+      let orderedpop =
+        action.payload === "ASC"
+          ? state.countries.sort(function (a, b) {
+              if (a.population > b.population) {
+                return 1;
+              }
+              if (b.population > a.population) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.countries.sort(function (a, b) {
+              if (a.population > b.population) {
+                return -1;
+              }
+              if (b.population > a.population) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        countries: orderedpop,
+        orderedsend: !state.orderedsend,
+      };
+
     case "FILTER_BY_CONTINENT":
       const { continent, response } = action.payload;
       return {

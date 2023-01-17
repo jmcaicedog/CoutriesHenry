@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCountries, setCountriesPerPage} from "../../redux/actions";
 import Filterbycontinent from "../filters/filterbycontinent/Filterbycontinent";
 import SortByName from "../filters/sortbyname/SortByName";
+import SortByHabs from "../filters/sortbyhabs/SortByHabs";
 
 
 const Countrieslist = () => {    
@@ -34,6 +35,7 @@ const Countrieslist = () => {
         <div className={style.filterbar}>
           <div>{<Filterbycontinent/>}</div>
           <div>{<SortByName/>}</div>
+          <div>{<SortByHabs/>}</div>
         </div>
         
         <div>{countrieslist}</div>

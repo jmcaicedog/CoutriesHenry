@@ -70,3 +70,12 @@ export const sortByName = (sortDirection) => {
     });
   };
 };
+
+export const sortByPopulation = (sortDirection) => {
+  return async function (dispatch) {
+    dispatch({
+      type: "SORT_BY_POPULATION",
+      payload: sortDirection,
+    });
+  };
+};
