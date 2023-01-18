@@ -2,6 +2,7 @@ const initialState = {
   countries: [],
   country: {},
   activities: [],
+  allActivities: [],
   searchTerm: "",
   current: 1,
   page: 1,
@@ -16,6 +17,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.payload.data,
+      };
+
+    case "GET_ACTIVITIES":
+      return {
+        ...state,
+        allActivities: action.payload.data,
       };
 
     case "GET_COUNTRY":
@@ -102,9 +109,30 @@ const reducer = (state = initialState, action) => {
       };
 
     case "FILTER_BY_ACTIVITY":
-      //const { continent, response } = action.payload;
+      const allCountries = state.countries;
+
+      const countriesWithActivities = allCountries.filter((country) => {
+        return country.Activities.length > 0;
+      });
+
+      let array = [];
+
+      for (let i = 0; i < countriesWithActivities.length; i++) {
+        for (let j = 0; j < countriesWithActivities[i].Activities.length; j++) {
+          if (
+            countriesWithActivities[i].Activities[j].name === action.payload
+          ) {
+            array.push(countriesWithActivities[i]);
+          }
+        }
+      }
+
+      const filtered =
+        action.payload === "All" ? countriesWithActivities : array;
+
       return {
         ...state,
+        countries: filtered,
       };
 
     default:

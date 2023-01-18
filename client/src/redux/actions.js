@@ -7,6 +7,13 @@ export const getCountries = () => {
   };
 };
 
+export const getActivities = () => {
+  return async function (dispatch) {
+    const response = await axios.get("http://localhost:3001/activities/");
+    dispatch({ type: "GET_ACTIVITIES", payload: response });
+  };
+};
+
 export const getCountry = (countryId) => {
   return async function (dispatch) {
     const response = await axios.get(
@@ -24,7 +31,7 @@ export const searchCountries = (searchTerm) => {
       );
       dispatch({ type: "SEARCH_COUNTRIES", payload: response });
     } catch (error) {
-      console.log("No hay un país que coincida con la búsqueda...");
+      console.log("Not country found... Please try another world!");
       alert("Not country found... Please try another world!");
       dispatch({ type: "SEARCH_COUNTRIES", payload: { data: [] } });
     }
@@ -64,7 +71,6 @@ export const filterByContinent = (continent) => {
 
 export const filterByActivity = (activity) => {
   return async function (dispatch) {
-    //const response = await axios.get("http://localhost:3001/countries");
     dispatch({
       type: "FILTER_BY_ACTIVITY",
       payload: activity,

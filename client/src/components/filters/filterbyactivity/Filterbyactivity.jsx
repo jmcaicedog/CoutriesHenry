@@ -1,10 +1,10 @@
 import style from "./Filterbyactivity.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByActivity, setCurrent, setPage } from "../../../redux/actions";
+import { filterByActivity, setCurrent, setPage} from "../../../redux/actions";
 
 
 const Filterbyactivity = ()=>{
-    const activities = useSelector((state)=>state.activities);
+    const allActivities = useSelector((state)=>state.allActivities);
 
     const dispatch = useDispatch();
 
@@ -14,11 +14,8 @@ const Filterbyactivity = ()=>{
         dispatch(setPage(1));
     }
 
-
-    console.log(activities);
-
-    const activitiesList = activities.map((activity)=>{return(
-        <><option value={activity.name}>{activity.name}</option></>
+    const activitiesList = allActivities.map((activity,id)=>{return(
+        <option key={id} value={activity.name}>{activity.name}</option>
     )})
 
     return(
@@ -26,7 +23,8 @@ const Filterbyactivity = ()=>{
         <div className={style.filtercontainer}>
             <p className={style.title}>Filter by activity</p>
             <select className={style.select} onChange={event => handleFilteredActivity(event)}>
-                <option value={"All"}>Select Activity</option>
+                <option value={"Select Activity"}>Select Activity</option>
+                <option value={"All"}>All</option>
                 {activitiesList}
             </select>
         </div>
