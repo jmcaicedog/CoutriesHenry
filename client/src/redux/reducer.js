@@ -1,5 +1,6 @@
 const initialState = {
   countries: [],
+  countriesUnmodified: [],
   country: {},
   activities: [],
   allActivities: [],
@@ -17,6 +18,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.payload.data,
+        countriesUnmodified: action.payload.data,
       };
 
     case "GET_ACTIVITIES":
@@ -109,7 +111,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case "FILTER_BY_ACTIVITY":
-      const allCountries = state.countries;
+      const allCountries = state.countriesUnmodified;
 
       const countriesWithActivities = allCountries.filter((country) => {
         return country.Activities.length > 0;
@@ -129,10 +131,10 @@ const reducer = (state = initialState, action) => {
 
       const filtered =
         action.payload === "All" ? countriesWithActivities : array;
-
       return {
         ...state,
         countries: filtered,
+        orderedsend: !state.orderedsend,
       };
 
     default:

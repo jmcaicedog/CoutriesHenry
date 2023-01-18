@@ -23,7 +23,6 @@ const Filterbyactivity = ()=>{
         <div className={style.filtercontainer}>
             <p className={style.title}>Filter by activity</p>
             <select className={style.select} onChange={event => handleFilteredActivity(event)}>
-                <option value={"Select Activity"}>Select Activity</option>
                 <option value={"All"}>All</option>
                 {activitiesList}
             </select>

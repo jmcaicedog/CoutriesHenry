@@ -16,6 +16,7 @@ const Countrieslist = () => {
     const orderedsend = useSelector((state)=>state.orderedsend);
     const page = useSelector((state)=>state.page);
     const allActivities = useSelector((state)=>state.allActivities);  
+    const allCountries = useSelector((state)=>state.allCountries);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
@@ -31,7 +32,7 @@ const Countrieslist = () => {
       dispatch(getActivities());
       !countries.length && dispatch(getCountries());
       page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
-    },[dispatch,page, countries.length, allActivities.length, orderedsend]);
+    },[dispatch,page, countries.length, allActivities.length, allCountries, orderedsend]);
     
     return(
       <>
