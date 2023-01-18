@@ -62,6 +62,16 @@ export const filterByContinent = (continent) => {
   };
 };
 
+export const filterByActivity = (activity) => {
+  return async function (dispatch) {
+    //const response = await axios.get("http://localhost:3001/countries");
+    dispatch({
+      type: "FILTER_BY_ACTIVITY",
+      payload: activity,
+    });
+  };
+};
+
 export const sortByName = (sortDirection) => {
   return async function (dispatch) {
     dispatch({

@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries, setCountriesPerPage} from "../../redux/actions";
 import Filterbycontinent from "../filters/filterbycontinent/Filterbycontinent";
+import Filterbyactivity from "../filters/filterbyactivity/Filterbyactivity";
 import SortByName from "../filters/sortbyname/SortByName";
 import SortByHabs from "../filters/sortbyhabs/SortByHabs";
 
@@ -14,6 +15,7 @@ const Countrieslist = () => {
     const countries = useSelector((state)=>state.countries);
     const orderedsend = useSelector((state)=>state.orderedsend);
     const page = useSelector((state)=>state.page);
+    const activities = useSelector((state)=>state.activities);  
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
@@ -28,12 +30,14 @@ const Countrieslist = () => {
     useEffect(()=>{
       !countries.length && dispatch(getCountries());
       page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
+      console.log(activities);
     },[dispatch,page, countries.length]);
     
     return(
       <>
         <div className={style.filterbar}>
           <div>{<Filterbycontinent/>}</div>
+          <div>{<Filterbyactivity/>}</div>
           <div>{<SortByName/>}</div>
           <div>{<SortByHabs/>}</div>
         </div>

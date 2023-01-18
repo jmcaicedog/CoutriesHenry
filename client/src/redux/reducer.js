@@ -101,6 +101,12 @@ const reducer = (state = initialState, action) => {
               ),
       };
 
+    case "FILTER_BY_ACTIVITY":
+      //const { continent, response } = action.payload;
+      return {
+        ...state,
+      };
+
     default:
       return { ...state };
   }

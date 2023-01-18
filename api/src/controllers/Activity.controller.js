@@ -1,4 +1,5 @@
 const { Activity } = require("../db");
+
 const setActivity = async (req, res) => {
   const { name, difficulty, duration, season, countryIds } = req.body;
   try {
@@ -15,4 +16,16 @@ const setActivity = async (req, res) => {
   }
 };
 
-module.exports = setActivity;
+const getActivities = async (req, res) => {
+  try {
+    const activities = await Activity.findAll();
+    if (!activities) {
+      throw "No activities have been created yet...";
+    }
+    res.status(200).json(activities);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+module.exports = { setActivity, getActivities };
