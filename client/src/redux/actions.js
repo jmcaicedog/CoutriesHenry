@@ -61,10 +61,9 @@ export const setCountriesPerPage = (countriesPerPage) => {
 
 export const filterByContinent = (continent) => {
   return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/countries");
     dispatch({
       type: "FILTER_BY_CONTINENT",
-      payload: { continent: continent, response: response },
+      payload: continent,
     });
   };
 };

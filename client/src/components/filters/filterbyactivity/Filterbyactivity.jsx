@@ -5,7 +5,6 @@ import { filterByActivity, setCurrent, setPage} from "../../../redux/actions";
 
 const Filterbyactivity = ()=>{
     const allActivities = useSelector((state)=>state.allActivities);
-
     const dispatch = useDispatch();
 
     const handleFilteredActivity = (event) =>{

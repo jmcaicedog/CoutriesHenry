@@ -14,11 +14,16 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_COUNTRIES":
-    case "SEARCH_COUNTRIES":
       return {
         ...state,
         countries: action.payload.data,
         countriesUnmodified: action.payload.data,
+      };
+
+    case "SEARCH_COUNTRIES":
+      return {
+        ...state,
+        countries: action.payload.data,
       };
 
     case "GET_ACTIVITIES":
@@ -99,15 +104,16 @@ const reducer = (state = initialState, action) => {
       };
 
     case "FILTER_BY_CONTINENT":
-      const { continent, response } = action.payload;
+      const continent = action.payload;
       return {
         ...state,
         countries:
           continent === "All"
-            ? response.data
-            : response.data.filter(
+            ? state.countriesUnmodified
+            : state.countriesUnmodified.filter(
                 (element) => element.continent === continent
               ),
+        orderedsend: !state.orderedsend,
       };
 
     case "FILTER_BY_ACTIVITY":
