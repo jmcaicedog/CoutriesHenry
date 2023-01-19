@@ -115,15 +115,15 @@ const Activityform = () =>{
                 <div>
                     
                     <select className={style.input} name="countryIds" id="countryIds" onChange={(event) => handleSelect(event)}>
-                    <option value="Select a season">Select some countries</option>
+                    <option value="Select some countries">Select some countries</option>
                         {countries.map((country) => (
-                            <option key={country.id} value={country.name}>{country.name}</option>
+                            <option key={country.id} value={country.id}>{country.name}</option>
                         ))}
                     </select>
                     {errors.countryIds && (<p className={style.errors}>{errors.countries}</p>)}
                     <div className={style.countriescontainer}>
                         {form.countryIds.map(country =>
-                        <div className={style.countrycontainer}>
+                        <div key={country} className={style.countrycontainer}>
                             <button className={style.myBtnClose} onClick={()=> handleDelete(country)}>x</button>
                             <p className={style.countryname}> {country} </p>
                         </div>    
