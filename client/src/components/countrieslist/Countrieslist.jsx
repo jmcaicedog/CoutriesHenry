@@ -16,7 +16,7 @@ const Countrieslist = () => {
     const orderedsend = useSelector((state)=>state.orderedsend);
     const page = useSelector((state)=>state.page);
     const allActivities = useSelector((state)=>state.allActivities);  
-    const allCountries = useSelector((state)=>state.allCountries);
+    const allCountries = useSelector((state)=>state.countriesUnmodified);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (

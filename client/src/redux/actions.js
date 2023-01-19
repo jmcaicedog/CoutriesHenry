@@ -38,6 +38,22 @@ export const searchCountries = (searchTerm) => {
   };
 };
 
+export const postActivity = (form) => {
+  return async function (dispatch) {
+    console.log("Formulrio recibido: ");
+    console.log(form);
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/activities",
+        form
+      );
+      dispatch({ type: "POST_ACTIVITY", payload: response });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
 export const setCurrent = (current) => {
   return async function (dispatch) {
     await dispatch({ type: "SET_CURRENT", payload: current });

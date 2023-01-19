@@ -39,6 +39,11 @@ const reducer = (state = initialState, action) => {
         activities: action.payload.Activities,
       };
 
+    case "POST_ACTIVITY":
+      return {
+        ...state,
+      };
+
     case "SET_CURRENT":
       return {
         ...state,
