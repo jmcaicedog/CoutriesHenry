@@ -1,23 +1,26 @@
 const validate = (form) => {
   let errors = {};
-  let dif = Number(form.difficulty);
-  let dur = Number(form.duration);
+  let difficulty = Number(form.difficulty);
+  let duration = Number(form.duration);
 
-  if (!form.name) errors.name = "Campo Necesario";
+  if (!form.name) errors.name = "You must enter a name for the activity";
   else if (/[^A-Za-z0-9 ]+/g.test(form.name))
-    errors.name = "Nombre no puede tener caracteres especiales o tildes";
+    errors.name = "The name cannot contain special characters or accents";
 
-  if (!form.difficulty) errors.difficulty = "Campo Necesario";
-  else if (dif <= 0 || dif > 5) errors.difficulty = "Debe ser entre 1 y 5";
+  if (!form.difficulty)
+    errors.difficulty = "You must enter a difficulty from 1 to 5";
+  else if (difficulty <= 0 || difficulty > 5)
+    errors.difficulty = "Difficulty must be from 1 to 5";
 
-  if (!form.duration) errors.duration = "Campo Necesario";
-  else if (dur <= 0 || dur > 24) errors.duration = "Debe ser entre 1 y 24";
+  if (!form.duration) errors.duration = "You must enter duration in hours";
+  else if (duration <= 0 || duration > 24)
+    errors.duration = "Duration must be from 1 to 24 hours";
 
-  if (!form.season || form.season === "vacio")
-    errors.season = "Campo Necesario";
+  if (!form.season || form.season === "Select a season")
+    errors.season = "You must select a season";
 
   if (!form.countryIds || form.countryIds.length === 0)
-    errors.countryIds = "Campo Necesario";
+    errors.countryIds = "You must select at least one country";
 
   return errors;
 };

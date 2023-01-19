@@ -1,3 +1,111 @@
-.error{
-    border: 2px solid red;
+.errors{
+    color: red;
+    margin-top: -15px;
 }
+
+.formcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.subcontainer{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    width: 33%;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.input{
+    padding-left: 20px;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    font-weight: 600;
+    outline: none;
+    font-family: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.myBtn {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .myBtn:hover {
+    background: #ddd;
+    color: black;
+  }
+
+  .myBtn2 {
+    width: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .myBtn2:hover {
+    background: #ddd;
+    color: black;
+  }
+
+  .right{
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+  }
+
+  .countriescontainer{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .countrycontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  .countryname{
+    font-weight: bold;
+  }
+
+  .myBtnClose{
+    padding: 0 5px 3px 5px;
+    margin-right: 5px;
+    width: auto;
+    height:fit-content;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .myBtnClose:hover{
+    background: #ddd;
+    color: black;
+  }

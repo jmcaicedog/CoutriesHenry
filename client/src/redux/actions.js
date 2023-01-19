@@ -40,8 +40,6 @@ export const searchCountries = (searchTerm) => {
 
 export const postActivity = (form) => {
   return async function (dispatch) {
-    console.log("Formulrio recibido: ");
-    console.log(form);
     try {
       const response = await axios.post(
         "http://localhost:3001/activities",
@@ -50,6 +48,7 @@ export const postActivity = (form) => {
       dispatch({ type: "POST_ACTIVITY", payload: response });
     } catch (error) {
       console.log(error.message);
+      dispatch({ type: "POST_ACTIVITY", payload: { data: [] } });
     }
   };
 };

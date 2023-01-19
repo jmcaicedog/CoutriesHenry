@@ -64,16 +64,21 @@ const Activityform = () =>{
         if(!form.name || !form.difficulty || !form.duration || !form.season || !form.countryIds) {
             return alert ('Please fill all required fields...')
         }
-        dispatch(postActivity(form));
-        //alert("Your activty was created successfully");
-        setForm({
-            name:"",
-            difficulty:"",
-            duration:"",
-            season:"",
-            countryIds:[]
-        });
-        //history.push("/countries");
+        try {
+            dispatch(postActivity(form));
+            setForm({
+                name:"",
+                difficulty:"",
+                duration:"",
+                season:"",
+                countryIds:[]
+            });
+            history.push("/countries");
+            alert("Activity created succesfully");
+        } catch (error) {
+            console.log(error.message);
+        }
+        
     }
 
     function handleDelete(event){
@@ -93,29 +98,41 @@ const Activityform = () =>{
 
     return(
         <div className={style.formcontainer}>
-            <div className={style.formbar}>
-                <button onClick={(event) => handleClick(event)}>Go back!</button>
-            </div>
+                
             <div className={style.subcontainer}>
-            <h2 className={style.title}>Add an touristic activity:</h2>
+                <div className={style.right}>
+                    <button className={style.myBtn2} onClick={(event) => handleClick(event)}>x</button>
+                </div>
+            <h2 className={style.title}>Add a touristic activity:</h2>
+            
             <form onSubmit={(event)=> handleSubmit(event)}>
-                <div>
-                    <label className={style.field}>Activity name: </label>
-                    <input className={style.input} type="text" value= {form.name} name= "name" onChange={(event)=> handleFormChange(event)}/>
+            <hr></hr>
+            <br></br>
+                <div>   
+                    <input className={style.input} type="text" value= {form.name} placeholder="Enter the activity name:" name= "name" onChange={(event)=> handleFormChange(event)}/>
                     {errors.name && (<p className={style.errors}>{errors.name}</p>)}
                 </div>
                 <div>
-                    <label className={style.field}>Select countries for your activity: </label>
+                    
                     <select className={style.input} name="countryIds" id="countryIds" onChange={(event) => handleSelect(event)}>
                     <option value="Select a season">Select some countries</option>
                         {countries.map((country) => (
-                            <option value={country.id}>{country.name}</option>
+                            <option key={country.id} value={country.name}>{country.name}</option>
                         ))}
                     </select>
                     {errors.countryIds && (<p className={style.errors}>{errors.countries}</p>)}
+                    <div className={style.countriescontainer}>
+                        {form.countryIds.map(country =>
+                        <div className={style.countrycontainer}>
+                            <button className={style.myBtnClose} onClick={()=> handleDelete(country)}>x</button>
+                            <p className={style.countryname}> {country} </p>
+                        </div>    
+                        )}
+                    </div>
+                    
                 </div>
                 <div>
-                    <label className={style.field}>Season: </label>
+                    
                     <select className={style.input} name="season" id="season" onChange={(event) => handleSelect(event)}>
                     <option value="Select a season">Select a season</option>
                             <option value={"Summer"}>Summer</option>
@@ -126,14 +143,12 @@ const Activityform = () =>{
                     {errors.season && (<p className={style.errors}>{errors.season}</p>)}
                 </div>
                 <div>
-                    <label className={style.field}>Difficulty: </label>
-                    <input className={style.input} type="number" value= {form.difficulty} name= "difficulty" onChange={(event)=> handleFormChange(event)}/>
+                    
+                    <input className={style.input} type="number" value= {form.difficulty} name= "difficulty" placeholder="Enter the activity difficulty (1 to 5)" onChange={(event)=> handleFormChange(event)}/>
                     {errors.difficulty && (<p className={style.errors}>{errors.difficulty}</p>)}
                 </div>
                 <div>
-                    <label className={style.field}>Duration: </label>
-                    <input className={style.input} type="number" value= {form.duration} name= "duration" onChange={(event)=> handleFormChange(event)}/>
-                    <label className={style.field}>Hours</label>
+                    <input className={style.input} type="number" value= {form.duration} name= "duration" placeholder="Enter the activity duration in hours (1 to 24)" onChange={(event)=> handleFormChange(event)}/>
                     {errors.duration && (<p className={style.errors}>{errors.duration}</p>)}
                 </div>
                 <div>
@@ -142,12 +157,7 @@ const Activityform = () =>{
                 
             </form>
                 
-                {form.countryIds.map(event =>
-                    <div className={style.conpais}>
-                        <p className={style.mpais}> {event} </p>
-                        <button className={style.myBtn} onClick={()=> handleDelete(event)}>X </button>
-                    </div>    
-                    )}
+                
                 </div>    
         </div>
     )
