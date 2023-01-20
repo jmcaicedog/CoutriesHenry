@@ -2,7 +2,7 @@ import { useHistory, useParams } from "react-router-dom";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deleteActivity, getCountry} from "../../redux/actions";
+import { deleteActivity, getCountry, setDetailChange} from "../../redux/actions";
 import style from "./Countrydetails.module.css";
 
 const Countrydetails = () =>{
@@ -11,16 +11,17 @@ const Countrydetails = () =>{
     const dispatch = useDispatch();
     const country = useSelector((state)=>state.country);
     const activities = useSelector((state)=>state.activities);
+    const detailchanged = useSelector((state)=>state.detailchanged);
     console.log(activities);
     
     function handleDelete(id){
         dispatch(deleteActivity(id));
-        //dispatch(setDetailChange());
+        dispatch(setDetailChange());
     }
 
     useEffect(()=>{
       dispatch(getCountry(countryId));
-    },[countryId, dispatch]);
+    },[countryId, dispatch, detailchanged]);
 
     const activitieslist = activities.map((activity)=>{
         return(
