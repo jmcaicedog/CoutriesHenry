@@ -2,23 +2,21 @@ import axios from "axios";
 
 export const getCountries = () => {
   return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/countries");
+    const response = await axios.get("/countries");
     dispatch({ type: "GET_COUNTRIES", payload: response });
   };
 };
 
 export const getActivities = () => {
   return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/activities/");
+    const response = await axios.get("/activities/");
     dispatch({ type: "GET_ACTIVITIES", payload: response });
   };
 };
 
 export const getCountry = (countryId) => {
   return async function (dispatch) {
-    const response = await axios.get(
-      `http://localhost:3001/countries/${countryId}`
-    );
+    const response = await axios.get(`/countries/${countryId}`);
     dispatch({ type: "GET_COUNTRY", payload: response.data });
   };
 };
@@ -26,9 +24,7 @@ export const getCountry = (countryId) => {
 export const searchCountries = (searchTerm) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/countries/?name=${searchTerm}`
-      );
+      const response = await axios.get(`/countries/?name=${searchTerm}`);
       dispatch({ type: "SEARCH_COUNTRIES", payload: response });
     } catch (error) {
       console.log("Not country found... Please try another world!");
@@ -41,10 +37,7 @@ export const searchCountries = (searchTerm) => {
 export const postActivity = (form) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        "http://localhost:3001/activities",
-        form
-      );
+      const response = await axios.post("/activities", form);
       dispatch({ type: "POST_ACTIVITY", payload: response });
     } catch (error) {
       console.log(error.message);
@@ -56,7 +49,7 @@ export const postActivity = (form) => {
 export const deleteActivity = (id) => {
   return async function (dispatch) {
     try {
-      const json = await axios.delete(`http://localhost:3001/activities/${id}`);
+      const json = await axios.delete(`/activities/${id}`);
       alert("Activity deleted succesfully");
       return dispatch({ type: "DELETE_ACTIVITY", payload: json });
     } catch (error) {
