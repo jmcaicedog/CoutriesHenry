@@ -1,13 +1,21 @@
 import style from "./Filterbyactivity.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByActivity, setCurrent, setPage} from "../../../redux/actions";
+import { useEffect } from "react";
+import { filterByActivity, getActivities, setCurrent, setPage} from "../../../redux/actions";
 
 
 const Filterbyactivity = ()=>{
     const allActivities = useSelector((state)=>state.allActivities);
+    const activitieschange = useSelector((state)=>state.activitieschange);
     const dispatch = useDispatch();
+    
+    useEffect(()=>{
+        dispatch(getActivities());
+    },[dispatch, activitieschange]);
+    
 
     const handleFilteredActivity = (event) =>{
+        dispatch(getActivities());
         dispatch(filterByActivity(event.target.value));
         dispatch(setCurrent(1));
         dispatch(setPage(1));

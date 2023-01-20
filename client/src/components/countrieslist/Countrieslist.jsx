@@ -18,6 +18,7 @@ const Countrieslist = () => {
     const allActivities = useSelector((state)=>state.allActivities);  
     const allCountries = useSelector((state)=>state.countriesUnmodified);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
+    const activitieschange = useSelector((state)=>state.activitieschange);
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
         <div key={country.id} className={style.countriescontainer}>
@@ -28,11 +29,14 @@ const Countrieslist = () => {
         );
     });
 
+    
+
+
     useEffect(()=>{
       dispatch(getActivities());
       !countries.length && dispatch(getCountries());
       page===1? dispatch(setCountriesPerPage(9)) : dispatch(setCountriesPerPage(10));
-    },[dispatch,page, countries.length, allActivities.length, allCountries, orderedsend]);
+    },[dispatch,page, countries.length, allActivities.length, allCountries, orderedsend, activitieschange]);
     
     return(
       <>

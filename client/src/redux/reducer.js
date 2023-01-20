@@ -10,6 +10,7 @@ const initialState = {
   countriesPerPage: 10,
   orderedsend: false,
   detailchanged: false,
+  activitieschanged: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -68,6 +69,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         detailchanged: !state.detailchanged,
+      };
+
+    case "SET_ACTIVITIES_CHANGE":
+      return {
+        ...state,
+        activitieschanged: !state.activitieschanged,
       };
 
     case "SET_COUNTRIES_PER_PAGE":

@@ -83,6 +83,12 @@ export const setDetailChange = () => {
   };
 };
 
+export const setActivitiesChange = () => {
+  return async function (dispatch) {
+    await dispatch({ type: "SET_ACTIVITIES_CHANGE" });
+  };
+};
+
 export const setCountriesPerPage = (countriesPerPage) => {
   return async function (dispatch) {
     await dispatch({

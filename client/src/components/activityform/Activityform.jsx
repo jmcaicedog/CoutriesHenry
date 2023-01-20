@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import style from "./Activityform.module.css"
 import validate from "../../utils/validate";
-import { getCountries, postActivity } from "../../redux/actions";
+import { getCountries, postActivity, setActivitiesChange } from "../../redux/actions";
 
 
 const Activityform = () =>{
@@ -72,6 +72,7 @@ const Activityform = () =>{
                 countryIds:[]
             });
             history.push("/countries");
+            dispatch(setActivitiesChange());
             alert("Activity created succesfully");
             //window.location.reload(true)  Posibilidad fea para recargar la página y que el filtro aplique de entrada
         } catch (error) {
