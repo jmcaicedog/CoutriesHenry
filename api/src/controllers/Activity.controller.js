@@ -28,4 +28,18 @@ const getActivities = async (req, res) => {
   }
 };
 
-module.exports = { setActivity, getActivities };
+const deleteActivity = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedRowsCount = await Activity.destroy({ where: { id } });
+    if (deletedRowsCount) {
+      res.status(200).json({ message: "The activity was deleted" });
+    } else {
+      res.status(404).json({ message: "Activity not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Activity delete error...");
+  }
+};
+module.exports = { setActivity, getActivities, deleteActivity };
