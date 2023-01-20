@@ -7,7 +7,6 @@ import { getCountries, postActivity, setActivitiesChange } from "../../redux/act
 
 
 const Activityform = () =>{
-    const a = 2;
     const dispatch = useDispatch();
     const history = useHistory();
     const countries = useSelector((state) => state.countries);
