@@ -42,6 +42,7 @@ const reducer = (state = initialState, action) => {
     case "POST_ACTIVITY":
       return {
         ...state,
+        orderedsend: !state.orderedsend,
       };
 
     case "SET_CURRENT":

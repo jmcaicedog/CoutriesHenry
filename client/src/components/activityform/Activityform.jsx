@@ -59,8 +59,6 @@ const Activityform = () =>{
 
     function handleSubmit(event){
         event.preventDefault();
-        console.log("Formulrio a enviar: ")
-        console.log(form);
         if(!form.name || !form.difficulty || !form.duration || !form.season || !form.countryIds) {
             return alert ('Please fill all required fields...')
         }
@@ -75,6 +73,7 @@ const Activityform = () =>{
             });
             history.push("/countries");
             alert("Activity created succesfully");
+            //window.location.reload(true)  Posibilidad fea para recargar la página y que el filtro aplique de entrada
         } catch (error) {
             console.log(error.message);
         }

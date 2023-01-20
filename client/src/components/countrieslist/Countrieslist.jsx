@@ -43,7 +43,7 @@ const Countrieslist = () => {
           <div>{<SortByHabs/>}</div>
         </div>
         
-        <div>{countrieslist}</div>
+        <div className={style.listcontainer}>{countrieslist}</div>
       </>  
     )
 }
