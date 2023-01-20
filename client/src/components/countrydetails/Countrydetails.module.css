@@ -61,3 +61,30 @@
     background: #ddd;
     color: black;
   }
+
+  .myBtnClose{
+    padding: 0 5px 3px 5px;
+    margin-right: 5px;
+    width: auto;
+    height:fit-content;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .myBtnClose:hover{
+    background: #ddd;
+    color: black;
+  }
+
+  .center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }

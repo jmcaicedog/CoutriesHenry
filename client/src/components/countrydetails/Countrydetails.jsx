@@ -2,17 +2,22 @@ import { useHistory, useParams } from "react-router-dom";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCountry } from "../../redux/actions";
+import { deleteActivity, getCountry} from "../../redux/actions";
 import style from "./Countrydetails.module.css";
 
 const Countrydetails = () =>{
     const {countryId}=useParams();
     const history = useHistory();
-  
     const dispatch = useDispatch();
     const country = useSelector((state)=>state.country);
     const activities = useSelector((state)=>state.activities);
+    console.log(activities);
     
+    function handleDelete(id){
+        dispatch(deleteActivity(id));
+        //dispatch(setDetailChange());
+    }
+
     useEffect(()=>{
       dispatch(getCountry(countryId));
     },[countryId, dispatch]);
@@ -24,6 +29,9 @@ const Countrydetails = () =>{
                 <p className={style.p}><span className={style.span}>Season:</span> {activity.season}</p>
                 <p className={style.p}><span className={style.span}>Difficulty:</span> {activity.difficulty}</p>
                 <p className={style.p}><span className={style.span}>Duration:</span> {activity.duration}</p>
+                <div className={style.center}>
+                    <button className={style.myBtnClose} onClick={()=> handleDelete(activity.id)}>x</button>
+                </div>
             </div>)
     })
     

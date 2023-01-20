@@ -45,6 +45,12 @@ const reducer = (state = initialState, action) => {
         orderedsend: !state.orderedsend,
       };
 
+    case "DELETE_ACTIVITY":
+      return {
+        ...state,
+        orderedsend: !state.orderedsend,
+      };
+
     case "SET_CURRENT":
       return {
         ...state,

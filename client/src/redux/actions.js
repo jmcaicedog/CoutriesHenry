@@ -53,6 +53,18 @@ export const postActivity = (form) => {
   };
 };
 
+export const deleteActivity = (id) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.delete(`http://localhost:3001/activities/${id}`);
+      alert("Activity deleted succesfully");
+      return dispatch({ type: "DELETE_ACTIVITY", payload: json });
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+};
+
 export const setCurrent = (current) => {
   return async function (dispatch) {
     await dispatch({ type: "SET_CURRENT", payload: current });

@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { DB_PORT } = process.env || 3001;
+const DB_PORT = process.env.DB_PORT || 3001;
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const getCountries = require("./src/helpers/getCountries");
