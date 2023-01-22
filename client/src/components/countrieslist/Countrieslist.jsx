@@ -19,6 +19,7 @@ const Countrieslist = () => {
     const allCountries = useSelector((state)=>state.countriesUnmodified);
     const countriesPerPage = useSelector((state)=>state.countriesPerPage);
     const activitieschange = useSelector((state)=>state.activitieschange);
+    
     const countrieslist = countries.slice((page-1) * countriesPerPage, (page-1) * countriesPerPage +countriesPerPage).map((country)=>{
       return (
         <div key={country.id} className={style.countriescontainer}>
